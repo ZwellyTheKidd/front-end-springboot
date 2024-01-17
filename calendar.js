@@ -4,7 +4,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const contentElement = document.getElementById('content');
     const editButton = document.getElementById('editButton');
     const backButton = document.getElementById('backButton');
+    const createContentButton = document.getElementById('createContentButton');
+    const backToCalendarButton = document.getElementById('backToCalendarButton');
     const searchInput = document.getElementById('searchInput');
+    const createContentElement = document.getElementById('create-content');
 
     // Sample data from backend
     const contentData = [
@@ -55,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     if (contentForDate) {
                         calendarHTML += `<td class="p-2 cursor-pointer text-blue-500" data-date="${dateString}">${currentDate.getDate()}</td>`;
                     } else {
-                        calendarHTML += `<td class="p-2">${currentDate.getDate()}</td>`;
+                        calendarHTML += `<td class="p-2 cursor-pointer text-red-500" data-date="${dateString}">${currentDate.getDate()}</td>`;
                     }
                 } else {
                     calendarHTML += '<td></td>';
@@ -95,13 +98,15 @@ document.addEventListener('DOMContentLoaded', function () {
             `;
             contentDetailsElement.classList.remove('hidden');
             editButton.style.display = 'block';
+            createContentElement.classList.add('hidden');
         } else {
             // No content for the selected date
-            contentElement.textContent = 'No content for this date.';
-            contentDetailsElement.classList.remove('hidden');
-            editButton.style.display = 'none';
+            contentDetailsElement.classList.add('hidden');
+            createContentElement.classList.remove('hidden');
         }
     }
+
+    // Back button
 
     // Back button click event
     backButton.addEventListener('click', function () {
