@@ -7,11 +7,29 @@ document.addEventListener('DOMContentLoaded', function () {
     const searchInput = document.getElementById('searchInput');
 
     // Sample data from backend
-    const contentData = {
-        "2024-01-01": "Content for 2024-01-01",
-        "2024-01-05": "Content for 2024-01-05",
-        // Add more data as needed
-    };
+    const contentData = [
+        {
+            id: 1,
+            title: "Content for 2024-01-01",
+            desc: "Description for 2024-01-01",
+            status: "ACTIVE",
+            contentType: "TYPE_A",
+            dateCreated: "2024-01-04T12:00:00",
+            dateUpdated: "2024-01-01T14:30:00",
+            url: "https://example.com/content/1"
+        },
+        {
+            id: 2,
+            title: "Content for 2024-01-05",
+            desc: "Description for 2024-01-05",
+            status: "INACTIVE",
+            contentType: "TYPE_B",
+            dateCreated: "2024-01-05T10:00:00",
+            dateUpdated: "2024-01-05T16:45:00",
+            url: "https://example.com/content/2"
+        },
+        // Add more content objects as needed
+    ];
 
     // Get the current date
     const today = new Date();
@@ -31,10 +49,10 @@ document.addEventListener('DOMContentLoaded', function () {
             calendarHTML += '<tr>';
             for (let i = 0; i < 7; i++) {
                 const dateString = currentDate.toISOString().split('T')[0];
-                const hasContent = contentData.hasOwnProperty(dateString);
+                const contentForDate = contentData.find(content => content.dateCreated.split('T')[0] === dateString);
 
                 if (currentDate.getMonth() === month) {
-                    if (hasContent) {
+                    if (contentForDate) {
                         calendarHTML += `<td class="p-2 cursor-pointer text-blue-500" data-date="${dateString}">${currentDate.getDate()}</td>`;
                     } else {
                         calendarHTML += `<td class="p-2">${currentDate.getDate()}</td>`;
@@ -62,10 +80,19 @@ document.addEventListener('DOMContentLoaded', function () {
     // Function to handle date cell click
     function handleDateClick(event) {
         const selectedDate = event.target.getAttribute('data-date');
+        const contentForDate = contentData.find(content => content.dateCreated.split('T')[0] === selectedDate);
 
-        if (contentData.hasOwnProperty(selectedDate)) {
+        if (contentForDate) {
             // Display content details
-            contentElement.textContent = contentData[selectedDate];
+            contentElement.innerHTML = `
+                <h3>${contentForDate.title}</h3>
+                <p>${contentForDate.desc}</p>
+                <p>Status: ${contentForDate.status}</p>
+                <p>Type: ${contentForDate.contentType}</p>
+                <p>Date Created: ${contentForDate.dateCreated}</p>
+                <p>Date Updated: ${contentForDate.dateUpdated}</p>
+                <p>URL: <a href="${contentForDate.url}" target="_blank">${contentForDate.url}</a></p>
+            `;
             contentDetailsElement.classList.remove('hidden');
             editButton.style.display = 'block';
         } else {
@@ -86,9 +113,11 @@ document.addEventListener('DOMContentLoaded', function () {
         const searchQuery = searchInput.value.toLowerCase();
 
         // Filter content based on search query
-        const filteredContent = Object.entries(contentData)
-            .filter(([date, content]) => date.includes(searchQuery) || content.toLowerCase().includes(searchQuery))
-            .reduce((obj, [date, content]) => ({ ...obj, [date]: content }), {});
+        const filteredContent = contentData.filter(content =>
+            content.title.toLowerCase().includes(searchQuery) ||
+            content.desc.toLowerCase().includes(searchQuery) ||
+            content.status.toLowerCase().includes(searchQuery)
+        );
 
         // Update the calendar with filtered content
         generateCalendar(today.getFullYear(), today.getMonth(), filteredContent);
