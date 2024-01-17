@@ -19,20 +19,28 @@
         <div id="content-details" class="mt-4 hidden">
             <h2 class="text-lg font-semibold mb-2">Content Details</h2>
             <div id="content"></div>
-            <button id="editButton" class="bg-blue-500 text-white px-4 py-2 mt-2">Edit</button>
-            <button id="backButton" class="bg-gray-500 text-white px-4 py-2 mt-2 ml-2">Back</button>
+            <div class="flex flex-row justify-around">
+                <button id="backButton" class="bg-gray-500 text-white px-4 py-2 mt-2">Back</button>
+                <button id="editButton" class="bg-blue-500 text-white px-4 py-2 mt-2">Edit</button>
+
+            </div>
         </div>
 
-        <div id="create-content" class="mt-4 hidden">
-            <h2 class="text-lg font-semibold mb-2">Create New Content</h2>
-            <p>No content for this date. Would you like to create new content?</p>
-            <button id="createContentButton" class="bg-green-500 text-white px-4 py-2 mt-2">Create Content</button>
-            <button id="backToCalendarButton" class="bg-gray-500 text-white px-4 py-2 mt-2 ml-2">Back to Calendar</button>
+        <div id="create-content" class="mt-4 hidden flex justify-center items-center flex-col">
+            <div>
+                <h2 class="text-lg font-semibold mb-2">Create New Content</h2>
+                <p>No content for this date. Would you like to create new content?</p>
+            </div>
+            <div>
+                <button id="createContentButton" class="bg-green-500 text-white px-4 py-2 mt-2">Create Content</button>
+                <button id="backToCalendarButton" class="bg-gray-500 text-white px-4 py-2 mt-2 ml-2">Back to
+                    Calendar</button>
+            </div>
         </div>
 
         <div class="mt-4">
             <label for="searchInput" class="text-lg font-semibold">Search:</label>
-            <input type="text" id="searchInput" class="border p-2 ml-2">
+            <input type="text" id="searchInput" class="border p-2">
         </div>
 
         <div class="bg-white p-6 rounded shadow-md">

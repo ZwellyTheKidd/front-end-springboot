@@ -106,8 +106,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Back button
-
     // Back button click event
     backButton.addEventListener('click', function () {
         contentDetailsElement.classList.add('hidden');
@@ -125,7 +123,7 @@ document.addEventListener('DOMContentLoaded', function () {
         );
 
         // Update the calendar with filtered content
-        generateCalendar(today.getFullYear(), today.getMonth(), filteredContent);
+        generateCalendar(today.getFullYear(), today.getMonth());
     });
 
     // Initial calendar generation
