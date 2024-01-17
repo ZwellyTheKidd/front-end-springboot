@@ -11,38 +11,39 @@
 
 <body class="bg-gray-100 flex items-center justify-center h-screen">
 
-    <div class="flex justify-center flex-col">
+    <div class="flex justify-center flex-col items-center">
 
-    <!-- ... (previous HTML code) ... -->
-<div id="content-details" class="mt-4 hidden">
-    <h2 class="text-lg font-semibold mb-2">Content Details</h2>
-    <div id="content"></div>
-    <button id="editButton" class="bg-blue-500 text-white px-4 py-2 mt-2">Edit</button>
-    <button id="backButton" class="bg-gray-500 text-white px-4 py-2 mt-2 ml-2">Back</button>
-</div>
-<div class="mt-4">
-    <label for="searchInput" class="text-lg font-semibold">Search:</label>
-    <input type="text" id="searchInput" class="border p-2 ml-2">
-</div>
-<!-- ... (rest of the HTML code) ... -->
-
-
-    <div class="bg-white p-6 rounded shadow-md">
         <h1 class="text-2xl font-semibold mb-4">Content Calendar App</h1>
 
-        <div id="calendar"></div>
 
         <div id="content-details" class="mt-4 hidden">
             <h2 class="text-lg font-semibold mb-2">Content Details</h2>
             <div id="content"></div>
             <button id="editButton" class="bg-blue-500 text-white px-4 py-2 mt-2">Edit</button>
+            <button id="backButton" class="bg-gray-500 text-white px-4 py-2 mt-2 ml-2">Back</button>
+        </div>
+        <div class="mt-4">
+            <label for="searchInput" class="text-lg font-semibold">Search:</label>
+            <input type="text" id="searchInput" class="border p-2 ml-2">
         </div>
 
-        <script src="calendar.js"></script>
-    </div>
-</div>
+        <div class="bg-white p-6 rounded shadow-md">
+          
 
-    <div id="app"></div>
+            <div id="calendar"></div>
+
+            <div id="content-details" class="mt-4 hidden">
+                <h2 class="text-lg font-semibold mb-2">Content Details</h2>
+                <div id="content"></div>
+                <button id="editButton" class="bg-blue-500 text-white px-4 py-2 mt-2">Edit</button>
+            </div>
+
+
+        </div>
+    </div>
+
+
+    <script src="calendar.js"></script>
     <script type="module" src="./main.js"></script>
 
 </body>
