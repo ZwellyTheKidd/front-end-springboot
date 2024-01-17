@@ -1,12 +1,67 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Content-App</title>
-    <link rel="stylesheet" href="./style.css">
-</head>
-<body>
+
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Content Calendar App</title>
+      <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="./style.css">
+      <style>
+        /* Add any additional styles here */
+      </style>
+    </head>
+    <body class="font-sans bg-gray-100">
+    
+      <div class="container mx-auto mt-8 p-4">
+        <h1 class="text-3xl font-bold mb-4">Content Calendar</h1>
+    
+        <!-- Calendar -->
+        <div id="calendar" class="mb-8"></div>
+    
+        <!-- Content Display -->
+        <div id="contentDisplay" class="hidden mt-4">
+          <h2 class="text-xl font-bold mb-2">Content Details</h2>
+          <p id="contentDetails"></p>
+          <button id="editButton" class="bg-blue-500 text-white px-4 py-2 mt-2">Edit Content</button>
+        </div>
+    
+        <!-- No Content Message -->
+        <div id="noContentMessage" class="hidden mt-4">
+          <p>No content available for this date.</p>
+          <p class="text-sm">Would you like to <span id="createContentLink" class="text-blue-500 cursor-pointer">create content</span>?</p>
+        </div>
+    
+        <!-- Search Form -->
+        <div class="mt-8">
+          <h2 class="text-xl font-bold mb-2">Search</h2>
+          <form id="searchForm">
+            <div class="flex space-x-4">
+              <input type="text" id="searchId" placeholder="ID" class="border p-2 rounded">
+              <input type="text" id="searchStatus" placeholder="Status" class="border p-2 rounded">
+              <input type="text" id="searchDescription" placeholder="Description" class="border p-2 rounded">
+              <button type="submit" class="bg-blue-500 text-white px-4 py-2">Search</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <div id="app"></div>
     <script type="module" src="./main.js"></script>
